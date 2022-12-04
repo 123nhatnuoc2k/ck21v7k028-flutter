@@ -5,8 +5,6 @@ import '../../models/product.dart';
 import '../shared/dialog_utils.dart';
 import 'products_manager.dart';
 
-
-
 class EditProductScreen extends StatefulWidget {
   static const routeName = '/edit-product';
 
@@ -34,35 +32,36 @@ class EditProductScreen extends StatefulWidget {
 }
 
 class _EditProductScreenState extends State<EditProductScreen> {
-   @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Edit Product'),
-          actions: <Widget>[
-            IconButton(icon: const Icon(Icons.save), onPressed: _saveForm),
-          ],
-        ),
-        body: _isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Form(
-                  key: _editForm,
-                  child: ListView(
-                    children: <Widget>[
-                      buildTitleField(),
-                      buildPriceField(),
-                      buildDescriptionField(),
-                      buildProductPreview(),
-                    ],
-                  ),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Edit Product'),
+        actions: <Widget>[
+          IconButton(icon: const Icon(Icons.save), onPressed: _saveForm),
+        ],
+      ),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                key: _editForm,
+                child: ListView(
+                  children: <Widget>[
+                    buildTitleField(),
+                    buildPriceField(),
+                    buildDescriptionField(),
+                    buildProductPreview(),
+                  ],
                 ),
               ),
-      );
-    }
+            ),
+    );
+  }
+
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
   final _editForm = GlobalKey<FormState>();
@@ -97,8 +96,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
       _imageUrlFocusNode.dispose();
       super.dispose();
     }
-
-   
   }
 
   TextFormField buildTitleField() {

@@ -4,8 +4,6 @@ import 'package:myshop/ui/products/products_manager.dart';
 import 'package:provider/provider.dart';
 import '../../models/product.dart';
 
-
-
 class UserProductListTile extends StatelessWidget {
   final Product product;
   const UserProductListTile(
@@ -41,9 +39,9 @@ class UserProductListTile extends StatelessWidget {
           ..hideCurrentSnackBar()
           ..showSnackBar(
             const SnackBar(
-             content: Text(
+              content: Text(
                 'Product deleted',
-                 textAlign: TextAlign.center,
+                textAlign: TextAlign.center,
               ),
             ),
           );
