@@ -3,10 +3,8 @@ import 'package:flutter/cupertino.dart';
 import '../../models/cart_item.dart';
 import '../../models/order_item.dart';
 import 'package:flutter/foundation.dart';
-import '../../models/cart_item.dart'; 
+import '../../models/cart_item.dart';
 import '../../models/order_item.dart';
-
-
 
 class OrdersManager with ChangeNotifier {
   final List<OrderItem> _orders = [
@@ -32,7 +30,7 @@ class OrdersManager with ChangeNotifier {
     return [..._orders];
   }
 
-  void addOrder (List<CartItem> cartProducts, double total) async { 
+  void addOrder(List<CartItem> cartProducts, double total) async {
     _orders.insert(
       0,
       OrderItem(
@@ -42,6 +40,6 @@ class OrdersManager with ChangeNotifier {
         dateTime: DateTime.now(),
       ),
     );
-      notifyListeners();   
+    notifyListeners();
   }
 }
