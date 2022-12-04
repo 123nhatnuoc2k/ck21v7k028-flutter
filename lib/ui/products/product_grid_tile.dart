@@ -10,8 +10,6 @@ class ProductGridTile extends StatelessWidget {
     super.key,
   });
 
-
-
   final Product product;
 
   @override
@@ -54,19 +52,19 @@ class ProductGridTile extends StatelessWidget {
     return GridTileBar(
       backgroundColor: Colors.black87,
       leading: ValueListenableBuilder<bool>(
-          valueListenable: product.isFavoriteListenable,
-          builder: (ctx, isFavorite, child) {
-            return IconButton(
-              icon: Icon(
-                isFavorite ? Icons.favorite : Icons.favorite_border,
-              ),
-              color: Theme.of(context).colorScheme.secondary,
-              onPressed: () {
-                product.isFavorite = !isFavorite;
-              },
-            );
-          },
-        ),
+        valueListenable: product.isFavoriteListenable,
+        builder: (ctx, isFavorite, child) {
+          return IconButton(
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+            ),
+            color: Theme.of(context).colorScheme.secondary,
+            onPressed: () {
+              product.isFavorite = !isFavorite;
+            },
+          );
+        },
+      ),
       title: Text(
         product.title,
         textAlign: TextAlign.center,
@@ -83,14 +81,14 @@ class ProductGridTile extends StatelessWidget {
             ..showSnackBar(
               SnackBar(
                 content: const Text(
-                'Item added to cart',
+                  'Item added to cart',
                 ),
                 duration: const Duration(seconds: 2),
                 action: SnackBarAction(
-                label: 'UNDO',
-                onPressed: () {
-                cart.removeSingleItem(product.id!);
-                },
+                  label: 'UNDO',
+                  onPressed: () {
+                    cart.removeSingleItem(product.id!);
+                  },
                 ),
               ),
             );
