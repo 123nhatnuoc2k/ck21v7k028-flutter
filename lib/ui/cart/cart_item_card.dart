@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/cart/cart_manager.dart';
-import '../../models/cart_item.dart'; 
+import '../../models/cart_item.dart';
 import '../shared/dialog_utils.dart';
 import 'package:provider/provider.dart';
 
-
-
 class CartItemCard extends StatelessWidget {
-  final String productId; 
+  final String productId;
   final CartItem cardItem;
 
   const CartItemCard({
-    required this.productId, 
-    required this.cardItem, super.key,
+    required this.productId,
+    required this.cardItem,
+    super.key,
   });
 
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return Dismissible(
       key: ValueKey(cardItem.id),
       background: Container(
-        color: Theme. of (context).errorColor, 
+        color: Theme.of(context).errorColor,
         alignment: Alignment.centerRight,
-        padding: const EdgeInsets.only (right: 20), 
+        padding: const EdgeInsets.only(right: 20),
         margin: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 4,
@@ -43,31 +42,32 @@ class CartItemCard extends StatelessWidget {
       onDismissed: (direction) {
         context.read<CartManager>().removeItem(productId);
       },
-        child: buildItemCard(),
+      child: buildItemCard(),
     );
   }
+
   Widget buildItemCard() {
     return Card(
-    margin: const EdgeInsets.symmetric(
-      horizontal: 15,
-      vertical: 4,
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(8),
-      child: ListTile(
-        leading: CircleAvatar(
-          child: Padding(
-            padding: const EdgeInsets.all(5),
-            child: FittedBox(
-              child: Text('\$${cardItem.price}'),
+      margin: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 4,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: ListTile(
+          leading: CircleAvatar(
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: FittedBox(
+                child: Text('\$${cardItem.price}'),
+              ),
             ),
           ),
+          title: Text(cardItem.title),
+          subtitle: Text('Total: \$${(cardItem.price * cardItem.quantity)}'),
+          trailing: Text('${cardItem.quantity} x'),
         ),
-        title: Text(cardItem.title),
-        subtitle: Text('Total: \$${(cardItem.price * cardItem.quantity)}'),
-         trailing: Text('${cardItem.quantity} x'),
       ),
-    ),
     );
   }
 }
